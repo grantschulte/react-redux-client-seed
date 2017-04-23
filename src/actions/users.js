@@ -26,7 +26,7 @@ function signupUserSuccess(user) {
 function signupUserFailure(error) {
   return {
     type: SIGNUP_USER_FAILURE,
-    error: error
+    payload: error
   }
 }
 
