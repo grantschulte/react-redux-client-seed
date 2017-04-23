@@ -18,11 +18,6 @@ form {
 
   // Elements
 
-  .form-heading h1 {
-    margin-bottom: 50px;
-    font-weight: bold;
-  }
-
   input {
     appearance: none;
     width: 100%;
@@ -48,6 +43,10 @@ form {
     font-weight: normal;
     background-color: $blue;
     color: #FFF;
+
+    &:hover {
+      background-color: darken($blue, 10%);
+    }
   }
 
   // Customizations

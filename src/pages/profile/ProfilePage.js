@@ -1,11 +1,11 @@
 import React from "react"
+import PageHeading from "../../components/page-heading/PageHeading"
+import "./ProfilePage.scss"
 
 const ProfilePage = () => (
   <div className="profile-page">
-    <div class="heading">
-      <h1>My Profile</h1>
-      <p>This is a private page. You must be authenticated to view this.</p>
-    </div>
+    <PageHeading text="Profile" />
+    <p>This is a private page. You must be authenticated to view this. Your username is _____ and your user id is _____.</p>
   </div>
 )
 
