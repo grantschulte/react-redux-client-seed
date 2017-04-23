@@ -1,0 +1,15 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+.header-nav {
+  text-align: right;
+  
+  a {
+    display: inline-block;
+    margin: 0 em(5);
+
+    &.selected {
+      color: $text-grey;
+    }
+  }
+}

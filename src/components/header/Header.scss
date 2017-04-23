@@ -1,0 +1,10 @@
+@import "../../styles/functions.scss";
+
+header {
+  display: flex;
+  padding: em(20);
+
+  > .col {
+    width: 50%;
+  }
+}
