@@ -1,4 +1,5 @@
 import React from "react"
+import SignUpFormContainer from "../../containers/SignUpFormContainer"
 import SignUpForm from "../../components/signup-form/SignUpForm"
 import PageHeading from "../../components/page-heading/PageHeading"
 import "./SignUpPage.scss"

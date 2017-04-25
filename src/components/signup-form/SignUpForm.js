@@ -6,31 +6,9 @@ import {
   signupUserFailure
 } from "../../actions/users"
 import FormField from "../form-field/FormField"
-
+import validate from "./form-validation"
 import "../../styles/forms.scss"
 import "./SignUpForm.scss"
-
-/**
- * Validate username and password on input
- */
-
-function validate(values) {
-  let errors = {};
-  let hasErrors = false;
-  let { username, password } = values
-
-  if (!username || username.trim() === "") {
-    errors.username = "You must enter a username.";
-    hasErrors = true;
-  }
-
-  if (!password || password.trim() === "") {
-    errors.password = "You must enter a password.";
-    hasErrors = true;
-  }
-
-  return hasErrors && errors;
-}
 
 /**
  * Make user creation request and handle response
@@ -39,7 +17,7 @@ function validate(values) {
 function validateAndSignUpUser(values, dispatch) {
   return dispatch(signupUser(values))
     .then(result => {
-      console.log("RESULT", result)
+      console.log("SIGNUP PROMISE RESULT", result)
       let { data, response } = result.payload
 
       if (response && response.status !== 200) {
@@ -51,28 +29,43 @@ function validateAndSignUpUser(values, dispatch) {
       dispatch(signupUserSuccess(data))
     })
     .catch(error => {
-      console.log("ERROR", error)
+      console.log("SIGNUP PROMISE CATCH ERROR", error)
       dispatch(signupUserFailure(error))
       throw new SubmissionError(error)
     })
 }
 
 class SignUpForm extends Component {
+  constructor(props) {
+    super(props)
+    console.log("SIGNUP COMPONENT PROPS", props)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("NEXT PROPS", nextProps)
+    console.log("THIS.PROPS", this.props)
+    // if (nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
+    //   this.context.router.push('/profile');
+    // }
+  }
+
   render() {
     const { handleSubmit } = this.props;
 
     return (
-      <form onSubmit={ handleSubmit(validateAndSignUpUser) } className="signup-form">
-        <div className="row">
+      <form onSubmit={ handleSubmit(validateAndSignUpUser) } className="form form--signup-form">
+        <div className="form__form-error text-center">Server errors go here.</div>
+
+        <div className="form__row">
           <Field component={FormField} name="username" type="text" placeholder="Username" />
         </div>
 
-        <div className="row">
+        <div className="form__row">
           <Field component={FormField} name="password" type="password" placeholder="Password" />
         </div>
 
-        <div className="row text-center">
-          <button type="submit">Create</button>
+        <div className="form__row text-center">
+          <button className="form__btn btn btn--full" type="submit">Create</button>
         </div>
       </form>
     )

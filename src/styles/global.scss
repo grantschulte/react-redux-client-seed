@@ -1,5 +1,5 @@
-@import "../../styles/variables";
-@import "../../styles/functions";
+@import "variables";
+@import "functions";
 @import url("http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css");
 
 * {
@@ -37,12 +37,17 @@ p {
   padding: em(60) em(20);
 }
 
+.text-center {
+  text-align: center;
+}
+
+
+// Buttons
+
 button {
   appearance: none;
   border: none;
   cursor: pointer;
-  padding: 0 em(20);
-  border-radius: 3px;
 
   &:focus {
     outline: none;
@@ -50,6 +55,32 @@ button {
   }
 }
 
-.text-center {
-  text-align: center;
+.btn {
+  padding: 0 em(20);
+  height: 55px;
+  font-size: em(22);
+  font-family: $font-regular-serif;
+  font-weight: normal;
+  color: $text-white;
+  border-radius: $el-radius;
+  background-color: $black;
+
+  &:hover {
+    background-color: darken($black, 10%);
+  }
+
+  // States
+
+  &--blue {
+    background-color: $blue;
+    color: $text-white;
+
+    &:hover {
+      background-color: darken($blue, 10%);
+    }
+  }
+
+  &--full {
+    width: 100%;
+  }
 }

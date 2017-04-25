@@ -28,6 +28,8 @@ const UserReducer = (state = INITIAL_STATE, action) => {
 
     case SIGNUP_USER_FAILURE:
       let error = action.payload.data || action.payload.message
+      
+      console.log("FAILURE REDUCER FUNCTION", action.payload)
 
       return Object.assign({}, state, {
         status: "signup",

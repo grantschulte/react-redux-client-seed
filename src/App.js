@@ -2,14 +2,12 @@ import React from "react"
 import { BrowserRouter, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 
-import Header from "../../components/header/Header"
-import HomePage from "../home/HomePage"
-import SignUpPage from "../signup/SignUpPage"
-import SignInPage from "../signin/SignInPage"
-import ProfilePage from "../profile/ProfilePage"
-import configureStore from "../../store"
-
-import "./App.scss"
+import Header from "./components/header/Header"
+import HomePage from "./pages/home/HomePage"
+import SignUpPage from "./pages/signup/SignUpPage"
+import SignInPage from "./pages/signin/SignInPage"
+import ProfilePage from "./pages/profile/ProfilePage"
+import configureStore from "./store"
 
 const store = configureStore()
 

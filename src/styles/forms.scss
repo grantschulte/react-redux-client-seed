@@ -1,14 +1,15 @@
 @import "./variables";
 @import "./functions";
 
-form {
+.form {
   font-family: $font-regular-serif;
 
   ::placeholder {
     color: $text-grey;
   }
 
-  .row {
+  &__row {
+    position: relative;
     margin-bottom: 10px;
 
     &:last-child {
@@ -34,25 +35,37 @@ form {
     }
   }
 
-  button {
+  &__btn {
     margin: em(30) 0 0 0;
-    height: 55px;
-    width: 100%;
-    font-size: em(22);
-    font-family: $font-regular-serif;
-    font-weight: normal;
-    background-color: $blue;
-    color: #FFF;
-
-    &:hover {
-      background-color: darken($blue, 10%);
-    }
   }
 
-  // Customizations
+  // Errors
 
-  &.signup-form,
-  &.signin-form {
+  &__form-error {
+    margin: em(30) 0;
+    font-size: em(16);
+    color: $text-red;
+  }
+
+  &__field-error {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    padding: 0 5px;
+    margin-top: em(-14);
+    height: em(28);
+    max-width: 100%;
+    font-size: em(12);
+    color: $white;
+    line-height: em(28);
+    background-color: $text-red;
+    border-radius: 2px;
+  }
+
+  // States
+
+  &--signup-form,
+  &--signin-form {
     .row {
       margin-bottom: 20px;
 

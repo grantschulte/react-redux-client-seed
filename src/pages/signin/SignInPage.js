@@ -6,16 +6,16 @@ const SignInPage = () => (
   <div className="signin-page">
     <PageHeading text="Access" icon="ion-unlocked" />
 
-    <form className="signin-form">
-      <div className="row">
+    <form className="form form--signin-form">
+      <div className="form__row">
         <input type="text" placeholder="Username" />
       </div>
 
-      <div className="row">
+      <div className="form__row">
         <input type="password" placeholder="Password" />
       </div>
 
-      <div className="row text-center">
+      <div className="form__row text-center">
         <button>Access</button>
       </div>
     </form>
