@@ -1,15 +1,15 @@
 import { connect } from "react-redux"
+import { withRouter } from "react-router-dom"
 import SignUpForm from "../components/signup-form/SignUpForm"
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
-    error: state.error
+    user: state.user
   }
 }
 
-const SignUpFormContainer = connect(
+const SignUpFormContainer = withRouter(connect(
   mapStateToProps
-)(SignUpForm)
+)(SignUpForm))
 
 export default SignUpFormContainer

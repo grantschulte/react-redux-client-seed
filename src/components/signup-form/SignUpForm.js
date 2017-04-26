@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { reduxForm, Field, SubmissionError } from "redux-form"
+import { push } from "react-router-redux"
 import {
   signupUser,
   signupUserSuccess,
@@ -17,44 +18,39 @@ import "./SignUpForm.scss"
 function validateAndSignUpUser(values, dispatch) {
   return dispatch(signupUser(values))
     .then(result => {
-      console.log("SIGNUP PROMISE RESULT", result)
       let { data, response } = result.payload
 
       if (response && response.status !== 200) {
         dispatch(signupUserFailure(response.data))
-        throw new SubmissionError(response.data)
+        throw new SubmissionError(response.data.message)
       }
 
       localStorage.setItem("jwt", data.token)
       dispatch(signupUserSuccess(data))
     })
     .catch(error => {
-      console.log("SIGNUP PROMISE CATCH ERROR", error)
       dispatch(signupUserFailure(error))
       throw new SubmissionError(error)
     })
 }
 
 class SignUpForm extends Component {
-  constructor(props) {
-    super(props)
-    console.log("SIGNUP COMPONENT PROPS", props)
-  }
-
   componentWillReceiveProps(nextProps) {
-    console.log("NEXT PROPS", nextProps)
-    console.log("THIS.PROPS", this.props)
-    // if (nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
-    //   this.context.router.push('/profile');
-    // }
+    if (nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
+      nextProps.dispatch(push("/profile"))
+    }
   }
 
   render() {
     const { handleSubmit } = this.props;
+    const formError = this.props.user.error;
 
     return (
       <form onSubmit={ handleSubmit(validateAndSignUpUser) } className="form form--signup-form">
-        <div className="form__form-error text-center">Server errors go here.</div>
+
+        {formError &&
+          <div className="form__form-error text-center">{formError}</div>
+        }
 
         <div className="form__row">
           <Field component={FormField} name="username" type="text" placeholder="Username" />

@@ -16,7 +16,7 @@ const SignInPage = () => (
       </div>
 
       <div className="form__row text-center">
-        <button>Access</button>
+        <button className="form__btn btn btn--full">Access</button>
       </div>
     </form>
   </div>
