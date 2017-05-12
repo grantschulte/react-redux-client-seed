@@ -28,7 +28,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       })
 
     case SIGNUP_USER_FAILURE:
-      error = action.payload.errors || 'There was an error with your submission.';
+      error = action.payload.errors || "There was an error with your submission.";
 
       return Object.assign({}, state, {
         status: "signup",

@@ -38,10 +38,10 @@ function signupUserFailure(error) {
 
 function meFromToken(token) {
   const request = axios({
-    method: 'get',
+    method: "get",
     url: `${API_URL}/users/me/from/token?token=${token}`,
     headers: {
-      'Authorization': `Bearer ${token}`
+      "Authorization": `Bearer ${token}`
     }
   });
 
