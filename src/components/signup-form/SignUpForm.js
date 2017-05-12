@@ -36,7 +36,12 @@ function validateAndSignUpUser(values, dispatch) {
 
 class SignUpForm extends Component {
   componentWillReceiveProps(nextProps) {
+    console.log('SUP PRE', nextProps);
+    console.log(nextProps.user.status === 'authenticated');
+    console.log(nextProps.user.user);
+    console.log(!nextProps.user.error);
     if (nextProps.user.status === 'authenticated' && nextProps.user.user && !nextProps.user.error) {
+      console.log('SUP NEXT', nextProps);
       nextProps.dispatch(push("/profile"))
     }
   }

@@ -27,11 +27,16 @@
     font-size: 1em;
     padding-left: 10px;
     border: 1px solid $grey;
+    transition: all 200ms ease-in-out;
+
+    &::placeholder {
+      transition: all 200ms ease-in-out;
+    }
 
     &:focus {
       box-shadow: none;
       outline: none;
-      border-color: $blue;
+      border-color: $black;
     }
   }
 
@@ -84,12 +89,12 @@
       background-color: transparent;
 
       &:focus {
-        border-color: $blue;
-        color: $text-blue;
+        border-color: $black;
+        color: $text-black;
       }
 
       &:focus::placeholder {
-        color: $text-blue;
+        color: $text-black;
       }
     }
   }

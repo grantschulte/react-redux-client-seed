@@ -20,7 +20,12 @@ body {
 
 a {
   text-decoration: none;
-  color: $text-blue;
+  color: $text-black;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    color: $text-grey;
+  }
 }
 
 h1, h2, h3 {
@@ -48,6 +53,7 @@ button {
   appearance: none;
   border: none;
   cursor: pointer;
+  transition: all 200ms ease-in-out;
 
   &:focus {
     outline: none;
